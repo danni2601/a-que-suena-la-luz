@@ -28,7 +28,7 @@ export function prepare(dataset){
   return {mode,scaleMax,years,countries,value,variation,rows};
 }
 export async function loadData(){
-  const base=import.meta.env.BASE_URL+'data/';
+  const base=import.meta.env.BASE_URL+'assets/data/';
   const real=await fetch(base+'validated.json');
   const content=real.headers.get('content-type')||'';
   if(real.ok&&content.includes('json'))return prepare(await real.json());

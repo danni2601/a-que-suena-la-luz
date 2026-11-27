@@ -98,7 +98,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--borders", type=Path, required=True)
     parser.add_argument("--manifest", type=Path, required=True)
-    parser.add_argument("--output", type=Path, default=Path("public/data/validated.json"))
+    parser.add_argument("--output", type=Path, default=Path("public/assets/data/validated.json"))
     parser.add_argument("--scale-max", type=float, required=True)
     args = parser.parse_args()
     if not np.isfinite(args.scale_max) or args.scale_max <= 0:

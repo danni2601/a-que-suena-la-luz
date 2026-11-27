@@ -1,4 +1,4 @@
-const root=import.meta.env.BASE_URL+'hand/';
+const root=import.meta.env.BASE_URL+'assets/hand/';
 
 const digits=[[0,1,2,3,4],[0,5,6,7,8],[5,9,10,11,12],[9,13,14,15,16],[13,17,18,19,20],[17,0]];
 
@@ -92,6 +92,7 @@ export async function startHandTracking(video, canvas, signal, onPose, setStatus
     const bundle=new URL(root+'vision_bundle.mjs',window.location.href).href;
     const {FilesetResolver,HandLandmarker}=await import(/* @vite-ignore */ bundle);
     const files=await FilesetResolver.forVisionTasks(root+'wasm');
+    files.wasmLoaderPath=files.wasmLoaderPath.replace(/\.js$/,'.mjs');
     if(signal.aborted)return;
     detector=await HandLandmarker.createFromOptions(files,{
       baseOptions:{modelAssetPath:root+'hand_landmarker.task'},runningMode:'VIDEO',numHands:1,

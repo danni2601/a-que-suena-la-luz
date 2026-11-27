@@ -55,7 +55,7 @@ function Charts({data,year,branch,iso,other,base,setYear}){
   </section>;
 }
 function App(){
-  const [data,setData]=useState(null),[dataError,setDataError]=useState(''),[stage,stageSet]=useState(0);
+  const [data,setData]=useState(null),[dataError,setDataError]=useState(''),[stage,stageSet]=useState(()=>Number(document.body.dataset.stage)||0);
   const [year,setYear]=useState(2011),[base,setBase]=useState(2011),[branch,setBranch]=useState(-1),[iso,setIso]=useState(''),[other,setOther]=useState('');
   const [motion,setMotion]=useState(()=>!matchMedia('(prefers-reduced-motion: reduce)').matches);
   const [playing,play]=useState(false),[speed,setSpeed]=useState(1);

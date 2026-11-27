@@ -4,6 +4,22 @@
 
 Instalación web en español. Percibir presenta el árbol y su paisaje sonoro. Experimentar permite explorar seis ramas geográficas y comparar periodos o países. Comprender revela la metáfora y relaciona la experiencia con estudios publicados.
 
+## Carpeta web
+
+`docs/` contiene la versión estática lista para servir. Los tres HTML abren directamente cada etapa y comparten `estilos.css` y `atlas.js`. Conserva `assets/` junto a ellos para los datos, fuentes y recursos de detección de manos. Para abrirla localmente, ejecuta `python3 -m http.server 8000 --directory docs` y visita [localhost](http://localhost:8000/).
+
+```text
+docs/
+├── index.html         Percibir
+├── experimentar.html  Experimentar
+├── comprender.html    Comprender
+├── estilos.css
+├── atlas.js
+└── assets/
+```
+
+Regenera la carpeta con `npm run package:web`.
+
 ## Ejecutar
 
 Usa Node.js 22.12 o posterior y un navegador con WebGL 2.
@@ -52,7 +68,7 @@ Hallazgos científicos independientes de la serie de demostración:
    python scripts/aggregate.py --borders limites.geojson --manifest manifiesto.json --scale-max VALOR
    ```
 
-   Define `VALOR` como un límite de escala común que cubra todos los países y años. El script asigna por centro de píxel y pondera por su superficie terrestre aproximada en la cuadrícula geográfica. Guarda el área válida para calcular promedios regionales. Revisa cobertura espacial y temporal, compara una muestra con una herramienta SIG independiente y registra el umbral de cobertura aplicado antes de publicar. Los agregados muestran únicamente los países incluidos y con datos. El atlas detecta `public/data/validated.json` cuando se compila o se sirve y obtiene el intervalo de los años disponibles.
+   Define `VALOR` como un límite de escala común que cubra todos los países y años. El script asigna por centro de píxel y pondera por su superficie terrestre aproximada en la cuadrícula geográfica. Guarda el área válida para calcular promedios regionales. Revisa cobertura espacial y temporal, compara una muestra con una herramienta SIG independiente y registra el umbral de cobertura aplicado antes de publicar. Los agregados muestran únicamente los países incluidos y con datos. El atlas detecta `public/assets/data/validated.json` cuando se compila o se sirve y obtiene el intervalo de los años disponibles.
 5. Vuelve a compilar y publica el resultado. La actualización es manual. Las series diarias y mensuales pueden mantenerse en el procesamiento externo, pero el visor actual solo presenta agregados anuales.
 
 ## Límites
